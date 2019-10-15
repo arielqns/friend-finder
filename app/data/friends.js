@@ -162,4 +162,4 @@ var friendsArray = [
 	}
 ];
 
-module.exports = friends;
+// module.exports = friends;
