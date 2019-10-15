@@ -16,14 +16,16 @@ var app = express();
 
 var bodyParser = require('body-parser');
 
+var path = require("path");
+
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
 
 // Create app urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false})
+app.use(bodyParser.urlencoded({ extended: true}));
 
 // parse various different custom JSON types as Json
-app.use(bodyParser.json({ type: 'application/++json'}))
+app.use(bodyParser.json({ type: 'application/*+json'}))
 
 // parse some custome things into a buffer
 app.use(bodyParser.raw({ type: 'application/vnd.custom-type'}))
@@ -32,9 +34,8 @@ app.use(bodyParser.raw({ type: 'application/vnd.custom-type'}))
 app.use(bodyParser.text({ type: 'text/html'}))
 
 
-require(".\app\routing\api-routes.js")(app);
-require(".\app\routing\html-routes.js")(app);
-
+require("./app/routing/api-routes.js")(app);
+require("./app/routing/html-routes.js")(app);
 
 app.listen(PORT, function(){
     console.log("App listening on PORT: " + PORT);
