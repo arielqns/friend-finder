@@ -18,7 +18,8 @@ https://github.com/arielqns/bamazon
 
 - NPM Install Dependencies
     1. Init
-    2. body-parser express --save 
+    2. body-parser 
+    3. express --save 
     3. DotEnv
 
 - Set up MySQL database
@@ -58,4 +59,4 @@ https://github.com/arielqns/bamazon
 
 
 # Created using: 
-Javascript, Node.js, Express, MySQL, NPM packages: Inquirer, MySQL, DotEnv. 
+Javascript, Node.js, Express, MySQL, NPM packages: body-parser, express --save

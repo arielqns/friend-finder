@@ -16,10 +16,13 @@ var app = express();
 
 var bodyParser = require('body-parser');
 
-var path = require("path");
+// var path = require("path");
 
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
+
+
+// create appplication/x-www-form-urlcoded parser
 
 // Create app urlencoded parser
 app.use(bodyParser.urlencoded({ extended: true}));

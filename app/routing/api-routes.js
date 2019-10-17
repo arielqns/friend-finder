@@ -14,18 +14,18 @@ module.exports = function (app) {
         };
         //Take results from user's survey POST and parse it
         var userData = req.body;
-        var userScore = userData.scores;
+        var userScores = userData.scores;
 
         // variable that calculate diff between user's scores and scores of others in database
         var totalDifference = 0;
 
         // loop thru all friends posibilities in database
         for (var i = 0; 1 < friends.length; i++) {
-            console.log(friends[i].name);
+            console.log(friends[i]);
             totalDifference = 0;
 
             // loop thru scores of each friend
-            for (var j = 0; j < friends[i].scores[j]; j++) {
+            for (var j = 0; j < friends[i]; j++) {
 
                 //we calculate teh difference between the scores and sum them into the totalDifference
                 totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[j]));

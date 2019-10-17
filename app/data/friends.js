@@ -1,5 +1,5 @@
 // Data structure that will store the friends data
-var friendsArray = [
+var friends = [
 	{
 		name: 'Anne',
 		photo: 'http://vignette1.wikia.nocookie.net/smurfs/images/9/95/Smurfette_9.jpg/revision/latest?cb=20140604174737',
@@ -162,4 +162,4 @@ var friendsArray = [
 	}
 ];
 
-// module.exports = friends;
+module.exports = friends;
