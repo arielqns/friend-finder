@@ -58,4 +58,4 @@ https://github.com/arielqns/bamazon
 
 
 # Created using: 
-Javascript, Node.js, MySQL, NPM packages: Inquirer, MySQL, DotEnv. 
+Javascript, Node.js, Express, MySQL, NPM packages: Inquirer, MySQL, DotEnv. 

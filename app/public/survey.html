@@ -17,15 +17,15 @@
     <!-- Font Awesome Glyphicons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/home-style.css">
+    <link rel="stylesheet" type="text/css" href="app\public\style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Asap|Francois+One" rel="stylesheet">
 
     <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
 
-<!-- JS -->
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
+    <!-- JS -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
 
 
 </head>
@@ -158,15 +158,11 @@
         <br>
 
         <!-- Survey Submit Button -->
-        <button class="btn waves-effect waves-light" type="submit" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>Submit</button>
+        <button class="btn waves-effect waves-light" type="submit" id="submit"><i class="fa fa-check-circle"
+                aria-hidden="true"></i>Submit</button>
         </button>
 
-
-
-
-
-<br>
-
+        <br>
 
         <footer class="footer">
             <div class="container">
@@ -175,10 +171,93 @@
             </div>
         </footer>
 
-
     </div>
 
-    <!-- Modal 16:14 of video -->
+    <!-- Modal Dialog Displaying Closest Friend Match -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h2 class="modal-title"><strong>>Closest Friend Match</strong></h2>
+            </div>
+            <div class="modal-body">
+                <h2 id="matchName"></h2>
+                <img id="matchImage" width="650" src="" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            
+    
+    <script type="text/javascript">
+ 
+            // var config = {
+            //     ".chosen-select":{},
+            //     ".chosen-select-deselect": {allow_single_deselect: true},
+            //     "chosen-select-no-single": {disable_search_threshold: 10},
+            //     "chosen-select-no-results": {no_results_text:"Oops, nothing found"},
+            //     "chosen-select-width": {width: "95%"}
+            // };
+
+            // for (var selector in config) {
+            //     $(selector).chosen(config[selector]);
+            // }
+
+
+        // Activate submit button
+        $("#submit").on("click", function() {
+           
+            //form validation
+            function validateForm() {
+                var isValid = true;
+                $(".form-control").each(function(){
+                    if ($(this).val() === "") {
+                        isValid = false;
+                    }
+                });
+                return isValid;
+        }
+
+            // if all required fields are filled
+            if (validateForm()){
+
+            // Gather user inputs
+            var userData = {
+                name: $("#name").val(),
+                photo: $("#photo").val(),
+                scores: [
+                    $("#q1").val(),
+                    $("#q2").val(),
+                    $("#q3").val(),
+                    $("#q4").val(),
+                    $("#q5").val(),
+                    $("#q6").val(),
+                    $("#q7").val(),
+                    $("#q8").val(),
+                    $("#q9").val(),
+                    $("#q10").val()
+                ]
+            };
+
+            //Grab the URL of the website
+            var currentURL = window.location.origin;
+            // AJAX post data to the friends API
+            $.post(currentURL + "/api/friends", userData, function(data){
+
+                // grab the results from AJAN post and post best match name and photo
+                    $("#matchName").text(data.name);
+                    $("#matchImg").attr("src", data.photo);
+
+                    // SHow modal with best match
+                    $("#resultsModal").modal("toggle");
+                });
+        }
+        else {
+            alert("Please fill out all fields before submitting!");
+        }
+        return false;
+    });
+    </script>
+
 </body>
 
 </html>
