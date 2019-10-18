@@ -1,0 +1,33 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #D7FFC7;
+    width: 75%;
+   margin: 0px auto; 
+
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+.site{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4 {font-family:  'Baloo', cursive;
+    font-size: 4em;
+    text-align: center;
+    margin-top: 75px;
+    margin-bottom: 20pm;
+
+}
+header {
+    height: 100px;
+}
+.modal-content{
+    text-align: center;
+}
+#matchImg {
+    max-width: 100%;
+    height: auto;
+}
