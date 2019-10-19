@@ -152,20 +152,27 @@
         <br>
         <br>
 
-        <div class="text-center">
-            <!-- Survey Submit Button -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
+
+        <!-- Survey Submit Button -->
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
                 aria-hidden="true"></i>
-              Submit</button>
-            <hr>
-            
+            Submit</button>
+        <hr>
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/arielqns/friend-finder"
+                        target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub Repo</a></p>
+            </div>
+        </footer>
 
-        </div>
+    </div>
 
 
+<!-- Modal Dialog Displaying Closest Friend Match -->
+<div id="results-modal" class="modalfade" role="dialog">
+    <div class="modal-dialog">
 
-
-        <!-- Modal Dialog Displaying Closest Friend Match -->
+        <!--content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -179,35 +186,28 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
+    </div>
+</div>
 
-        <footer class="footer">
-            <div class="container">
-                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/arielqns/friend-finder"
-                        target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub Repo</a></p>
-            </div>
-        </footer>
-
-</body>
-
-</html>
 
 <script type="text/javascript">
 
-    // var config = {
-    //     ".chosen-select":{},
-    //     ".chosen-select-deselect": {allow_single_deselect: true},
-    //     "chosen-select-no-single": {disable_search_threshold: 10},
-    //     "chosen-select-no-results": {no_results_text:"Oops, nothing found"},
-    //     "chosen-select-width": {width: "95%"}
-    // };
+    var config = {
+        ".chosen-select":{},
+        ".chosen-select-deselect": {allow_single_deselect: true},
+        "chosen-select-no-single": {disable_search_threshold: 10},
+        "chosen-select-no-results": {no_results_text:"Oops, nothing found"},
+        "chosen-select-width": {width: "95%"}
+    };
 
-    // for (var selector in config) {
-    //     $(selector).chosen(config[selector]);
-    // }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
 
 
     // Activate submit button
-    $("#submit").on("click", function () {
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
 
         //form validation
         function validateForm() {
@@ -266,3 +266,7 @@
         return false;
     });
 </script>
+
+</body>
+
+</html>

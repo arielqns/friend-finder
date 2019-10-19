@@ -1,12 +1,21 @@
-var path = require('path');
+// var path = require('path');
+
+//Link route to data sources
 var friends = require('../data/friends.js');
 
+
+//Making the route
 module.exports = function (app) {
+
+    //API GET request  when user visits a link
     app.get("/api/friends", function (req, res) {
         res.json(friends);
     });
 
+    //API POST Request - when user submits a data back via jSON
     app.post("/api/friends", function (req, res) {
+
+        
         var bestMatch = {
             name: "",
             photo: "",
@@ -21,21 +30,25 @@ module.exports = function (app) {
 
         // loop thru all friends posibilities in database
         for (var i = 0; 1 < friends.length; i++) {
-            console.log(friends[i]);
+            var currentFriend = friends[i];
             totalDifference = 0;
 
+            console.log(currentFriend.name);
+
             // loop thru scores of each friend
-            for (var j = 0; j < friends[i]; j++) {
+            for (var j = 0; j < currentFriend.scores.length; j++) {
+                var currentFriendScore = currentFriend.scores[j];
+                var currentUserScore = userScores[j];
 
                 //we calculate teh difference between the scores and sum them into the totalDifference
-                totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[j]));
+                totalDifference += Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));
 
                 //If the sum of diff is less than the diff of the current "best Match"
                 if (totalDifference <= bestMatch.friendDifference) {
 
                     //reset the bestMatch to be the new friend
-                    bestMatch.name = friends[i].name;
-                    bestMatch.photo = friends[i].photo;
+                    bestMatch.name = currentFriend.name;
+                    bestMatch.photo = currentFriendScore.photo;
                     bestMatch.friendDifference = totalDifference;
                 }
             }
@@ -48,4 +61,4 @@ module.exports = function (app) {
         res.json(bestMatch);
 
     });
-}
+};
