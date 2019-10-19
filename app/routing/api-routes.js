@@ -1,14 +1,14 @@
 // var path = require('path');
 
 //Link route to data sources
-var friends = require('../data/friends.js');
+var friends = require("../data/friends");
 
 
 //Making the route
 module.exports = function (app) {
 
     //API GET request  when user visits a link
-    app.get("/api/friends", function (req, res) {
+    app.get("/api/friends", function (_req, res) {
         res.json(friends);
     });
 
@@ -26,10 +26,10 @@ module.exports = function (app) {
         var userScores = userData.scores;
 
         // variable that calculate diff between user's scores and scores of others in database
-        var totalDifference = 0;
+        var totalDifference;
 
         // loop thru all friends posibilities in database
-        for (var i = 0; 1 < friends.length; i++) {
+        for (var i = 0; i < friends.length; i++) {
             var currentFriend = friends[i];
             totalDifference = 0;
 
@@ -42,18 +42,18 @@ module.exports = function (app) {
 
                 //we calculate teh difference between the scores and sum them into the totalDifference
                 totalDifference += Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));
-
-                //If the sum of diff is less than the diff of the current "best Match"
-                if (totalDifference <= bestMatch.friendDifference) {
-
-                    //reset the bestMatch to be the new friend
-                    bestMatch.name = currentFriend.name;
-                    bestMatch.photo = currentFriendScore.photo;
-                    bestMatch.friendDifference = totalDifference;
-                }
             }
+            //If the sum of diff is less than the diff of the current "best Match"
+            if (totalDifference <= bestMatch.friendDifference) {
 
+                //reset the bestMatch to be the new friend
+                bestMatch.name = currentFriend.name;
+                bestMatch.photo = currentFriendScore.photo;
+                bestMatch.friendDifference = totalDifference;
+            }
         }
+
+        
         //save user's data to database
         friends.push(userData);
 
