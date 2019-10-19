@@ -1,7 +1,7 @@
 # <strong>friend-finder</strong>
 
 # Links
-- Deployment Link: @ Heroku
+- Deployment Link: @ Heroku https://frozen-sea-97487.herokuapp.com/
 - GitHub Resipository Link: https://github.com/arielqns/friend-finder
 
 # Created by
@@ -13,7 +13,7 @@ Friend-finder is a compatibility-based application. The full-stack site takes in
 
 # Instructions:
 <strong>Try the App on Heroku</strong>
-- Deployment Link @ Heroku
+- Deployment Link @ Heroku https://frozen-sea-97487.herokuapp.com/
     
 <strong>To run the App locally</strong>
 
